@@ -21,7 +21,7 @@ provider "snowflake" {
 }
 
 module "snowflake_resources" {
-  source              = "./modules/snowflake_resources"
+  source              = "./modules/snowflake"
   time_travel_in_days = 30
   database            = var.database
   env_name            = var.env_name
