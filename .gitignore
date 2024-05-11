@@ -1,0 +1,42 @@
+#Ignore local terraform directories
+**/.terraform/*
+
+#Ignore .terraform.lock.hcl file
+!.terraform.lock.hcl
+
+#Ignore terraform.tfstate file
+*.tfstate
+*.tfstate.*
+
+#Ignore crash log files
+crash.log
+crash.*.log
+
+#Ignore .tfvars files
+*.tfvars
+*.tfvars.json
+
+#Ignore override files as they are usually used to override resources in the terraform state
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+#Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+#Ignore CLI logs
+terraform.log
+
+#Ignore plan output
+*.tfplan
+
+#Ignore Private key files
+*.pem
+*.p8
+
+#Ignore Public key files
+*.pub
+
+
