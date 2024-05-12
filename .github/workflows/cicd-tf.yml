@@ -71,7 +71,7 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
@@ -108,13 +108,13 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
             - name: Terraform Apply
               id: apply
-              run: terraform -chdir=./staging apply -auto-approve
+              run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
@@ -150,7 +150,7 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
@@ -187,12 +187,12 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
 
             - name: Terraform Apply
               id: apply
-              run: terraform -chdir=./staging apply -auto-approve
+              run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
