@@ -75,6 +75,8 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     deploy-dev:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -113,6 +115,8 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
             - name: Terraform Apply
               id: apply
@@ -120,6 +124,8 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     preview-prod:
         if: startsWith(github.ref, 'refs/heads/release/')
@@ -157,6 +163,8 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     deploy-prod:
         if: startsWith(github.ref, 'refs/heads/release/') && github.event_name == 'push'
@@ -195,6 +203,8 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
             - name: Terraform Apply
               id: apply
@@ -202,3 +212,5 @@ jobs:
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}

@@ -19,7 +19,12 @@ variable "snowflake_private_key" {
   sensitive   = true
 }
 
-variable "snowflake_password" {
+variable "snowflake_account" {
+  type      = string
+  sensitive = true
+}
+
+variable "snowflake_user" {
   type      = string
   sensitive = true
 }
