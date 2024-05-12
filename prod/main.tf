@@ -15,7 +15,7 @@ terraform {
   }
 }
 provider "snowflake" {
-  account  = "KVISTNV.SU33938"
+  account  = "sr27128.ap-southeast-2"
   user     = "ADMIN"
   password = var.snowflake_password
   role     = "ACCOUNTADMIN"
