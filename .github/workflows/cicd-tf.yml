@@ -14,18 +14,6 @@ on:
 jobs:
     security-scan-terraform-code:
         name: Security scan (terraform code)
-        # runs-on: ubuntu-latest
-        # steps:
-        #   - uses: actions/checkout@v4
-        #   - name: Run Bridgecrew 
-        #     id: Bridgecrew
-        #     uses: bridgecrewio/bridgecrew-action@master 
-        #     env:
-        #       PRISMA_API_URL: https://api.anz.prismacloud.io
-        #     with:
-        #       api-key: ${{ secrets.BC_API_KEY }}
-        #       quiet: true
-        #       soft_fail: true
         runs-on: ubuntu-latest
         steps:
           - name: Checkout repo

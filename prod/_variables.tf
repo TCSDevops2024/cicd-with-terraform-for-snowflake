@@ -1,6 +1,6 @@
 variable "database" {
   type    = string
-  default = "TASTY_BYTES_SAMPLE_DATA_PROD"
+  default = "TASTY_BYTES_PROD"
 }
 
 variable "schema" {
