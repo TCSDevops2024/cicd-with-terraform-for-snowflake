@@ -15,10 +15,10 @@ terraform {
   }
 }
 provider "snowflake" {
-  account     = "KVISTNV.SU33938"
-  user        = "ADMIN"
-  password    = var.snowflake_password
-  role        = "ACCOUNTADMIN"
+  account  = "KVISTNV.SU33938"
+  user     = "ADMIN"
+  password = var.snowflake_password
+  role     = "ACCOUNTADMIN"
   # private_key = var.snowflake_private_key
 }
 
