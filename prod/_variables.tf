@@ -18,3 +18,8 @@ variable "snowflake_private_key" {
   description = "Private key used to access Snowflake"
   sensitive   = true
 }
+
+variable "snowflake_password" {
+  type      = string
+  sensitive = true
+}

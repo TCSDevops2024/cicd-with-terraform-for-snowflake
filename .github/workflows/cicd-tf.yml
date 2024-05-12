@@ -74,6 +74,7 @@ jobs:
               run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
     deploy-dev:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -111,12 +112,14 @@ jobs:
               run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
             - name: Terraform Apply
               id: apply
               run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
     preview-prod:
         if: startsWith(github.ref, 'refs/heads/release/')
@@ -153,6 +156,7 @@ jobs:
               run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
     deploy-prod:
         if: startsWith(github.ref, 'refs/heads/release/') && github.event_name == 'push'
@@ -190,9 +194,11 @@ jobs:
               run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
             - name: Terraform Apply
               id: apply
               run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
