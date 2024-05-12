@@ -19,7 +19,7 @@ provider "snowflake" {
   user        = "ADMIN"
   password    = var.snowflake_password
   role        = "ACCOUNTADMIN"
-  private_key = var.snowflake_private_key
+  # private_key = var.snowflake_private_key
 }
 
 module "snowflake_resources" {
