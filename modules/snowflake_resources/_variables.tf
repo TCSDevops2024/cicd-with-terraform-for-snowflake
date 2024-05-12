@@ -12,6 +12,6 @@ variable "env_name" {
 }
 
 variable "time_travel_in_days" {
-  type    = number
+  type        = number
   description = "Number of days configured for time travel"
 }
