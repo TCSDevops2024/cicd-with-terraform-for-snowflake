@@ -11,7 +11,8 @@ resource "snowflake_grant_privileges_to_account_role" "schema_ro_grant" {
   privileges        = ["USAGE"]
   account_role_name = "TF_READER"
   on_schema {
-    all_schemas_in_database = snowflake_database.tf_database.name
+    # all_schemas_in_database = snowflake_database.tf_database.name
+    schema_name = "\"${snowflake_database.tf_database.name}\".\"${snowflake_schema.tf_schema.name}\""
   }
 }
 
