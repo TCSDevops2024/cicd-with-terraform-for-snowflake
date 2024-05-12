@@ -15,11 +15,12 @@ terraform {
   }
 }
 provider "snowflake" {
-  account  = "sr27128.ap-southeast-2"
-  user     = "ADMIN"
-  password = var.snowflake_password
-  role     = "ACCOUNTADMIN"
-  # private_key = var.snowflake_private_key
+  account       = "sr27128.ap-southeast-2"
+  authenticator = "JWT"
+  role          = "ACCOUNTADMIN"
+  private_key   = var.snowflake_private_key
+  # user     = "ADMIN"
+  # password = var.snowflake_password
 }
 
 module "snowflake_resources" {
