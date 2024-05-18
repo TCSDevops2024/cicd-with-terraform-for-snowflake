@@ -135,15 +135,15 @@ jobs:
 
             - name: Terraform Init
               id: terraform_init
-              run: terraform -chdir=./dev init
+              run: terraform -chdir=./prod init
 
             - name: Terraform Format
               id: fmt
-              run: terraform -chdir=./dev fmt -recursive -check
+              run: terraform -chdir=./prod fmt -recursive -check
 
             - name: Terraform Validate
               id: validate
-              run: terraform -chdir=./dev validate -no-color
+              run: terraform -chdir=./prod validate -no-color
 
             - name: Terraform Plan
               id: plan
@@ -175,19 +175,19 @@ jobs:
 
             - name: Terraform Init
               id: terraform_init
-              run: terraform -chdir=./dev init -reconfigure
+              run: terraform -chdir=./prod init
 
             - name: Terraform Format
               id: fmt
-              run: terraform -chdir=./dev fmt -recursive -check
+              run: terraform -chdir=./prod fmt -recursive -check
 
             - name: Terraform Validate
               id: validate
-              run: terraform -chdir=./dev validate -no-color
+              run: terraform -chdir=./prod validate -no-color
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./dev plan 
+              run: terraform -chdir=./prod plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
                 TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
