@@ -175,7 +175,7 @@ jobs:
 
             - name: Terraform Init
               id: terraform_init
-              run: terraform -chdir=./dev init
+              run: terraform -chdir=./dev init -reconfigure
 
             - name: Terraform Format
               id: fmt
