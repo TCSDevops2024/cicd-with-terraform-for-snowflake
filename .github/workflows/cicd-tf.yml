@@ -14,18 +14,6 @@ on:
 jobs:
     security-scan-terraform-code:
         name: Security scan (terraform code)
-        # runs-on: ubuntu-latest
-        # steps:
-        #   - uses: actions/checkout@v4
-        #   - name: Run Bridgecrew 
-        #     id: Bridgecrew
-        #     uses: bridgecrewio/bridgecrew-action@master 
-        #     env:
-        #       PRISMA_API_URL: https://api.anz.prismacloud.io
-        #     with:
-        #       api-key: ${{ secrets.BC_API_KEY }}
-        #       quiet: true
-        #       soft_fail: true
         runs-on: ubuntu-latest
         steps:
           - name: Checkout repo
@@ -71,9 +59,12 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     deploy-dev:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -108,15 +99,21 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
             - name: Terraform Apply
               id: apply
-              run: terraform -chdir=./staging apply -auto-approve
+              run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     preview-prod:
         if: startsWith(github.ref, 'refs/heads/release/')
@@ -150,9 +147,12 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
     deploy-prod:
         if: startsWith(github.ref, 'refs/heads/release/') && github.event_name == 'push'
@@ -187,12 +187,18 @@ jobs:
 
             - name: Terraform Plan
               id: plan
-              run: terraform -chdir=./staging plan 
+              run: terraform -chdir=./dev plan 
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
 
             - name: Terraform Apply
               id: apply
-              run: terraform -chdir=./staging apply -auto-approve
+              run: terraform -chdir=./dev apply -auto-approve
               env:
                 TF_VAR_snowflake_private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+                TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                TF_VAR_snowflake_user: ${{ secrets.SNOWFLAKE_USER }}
+                TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}

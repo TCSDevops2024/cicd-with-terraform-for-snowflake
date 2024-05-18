@@ -9,16 +9,17 @@ terraform {
     bucket         = "ap-southeast2-tf-state-891988165081"
     key            = "prod"
     region         = "ap-southeast-2"
-    dynamodb_table = "sydney-terraform-state-lock-891988165081 "
+    dynamodb_table = "sydney-terraform-state-lock-891988165081"
     encrypt        = true
 
   }
 }
 provider "snowflake" {
-  account     = "KVISTNV.SU33938"
-  username    = "ADMIN"
-  role        = "ACCOUNTADMIN"
-  private_key = var.snowflake_private_key
+  account       = var.snowflake_account
+  user          = var.snowflake_user
+  authenticator = "JWT"
+  role          = "ACCOUNTADMIN"
+  private_key   = var.snowflake_private_key
 }
 
 module "snowflake_resources" {

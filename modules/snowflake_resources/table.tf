@@ -1,7 +1,7 @@
 resource "snowflake_table" "tf_table" {
   database   = snowflake_database.tf_database.name
   schema     = snowflake_schema.tf_schema.name
-  depends_on = [snowflake_table_grant.table_ro_grant]
+  depends_on = [snowflake_grant_privileges_to_account_role.table_ro_grant]
   comment    = "Table for ${var.env_name}"
   name       = "MENU"
   column {
