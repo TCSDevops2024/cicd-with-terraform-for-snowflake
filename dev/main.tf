@@ -2,14 +2,14 @@ terraform {
   required_providers {
     snowflake = {
       source  = "Snowflake-Labs/snowflake"
-      version = "0.90.0"
+      version = "0.92.0"
     }
   }
   backend "s3" {
-    bucket         = "ap-southeast2-tf-state-891988165081"
+    bucket         = "ap-southeast2-tf-state-058264307215"
     key            = "dev"
     region         = "ap-southeast-2"
-    dynamodb_table = "sydney-terraform-state-lock-891988165081"
+    dynamodb_table = "sydney-terraform-state-lock-058264307215"
     encrypt        = true
 
   }
